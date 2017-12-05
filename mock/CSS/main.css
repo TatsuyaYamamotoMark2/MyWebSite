@@ -18,10 +18,16 @@ body{
     display:inline;
     padding: 2px;
 }
+.linkBtn{
+    width: 120px;
+}
 
 p{
     color: #848daf;
     font-weight: 200;
+}
+.title{
+    font-size: 24px;
 }
 h1,h2,h3,h4,h5,a{
     color: #647191;
@@ -32,10 +38,24 @@ h1,h2,h3,h4,h5,a{
   display: block;
 }
 .nav-li{
-    padding: 0 20px 0 0;
+    padding: 0 -20px 0 -20px;
 }
 .bg-theme{
-    background-color: rgba(140, 162, 209, 0.55);
+    background-color: rgba(140, 162, 209, 0.22);
+      position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+.bg-theme:before{
+    background-color: rgba(140, 162, 209, 0.22);
+    content: "";
+  z-index: -1;
+      -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
 }
 .border-left{
     border-left: 1px dashed rgba(130, 146, 195, 0.67);
@@ -72,4 +92,15 @@ flex-wrap: wrap;
 td {
 white-space: nowrap;
 }
-
+audio{
+    width: 64px;
+}
+#birthdate{
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-right: 0px
+}
+#birth{
+    margin-left: 0px;
+    width: 138px;
+}

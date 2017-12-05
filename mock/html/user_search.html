@@ -11,56 +11,57 @@
 </head>
 <body>  
  <!-- navbar -->
+    
     <div class="container">
         <div class="row">
             <nav class="navbar navbar-default navbar-fixed-top bg-theme">
-
-                <div class="col-xs-6">
+                <div class="col-xs-6 col-sm-4">
                     <a href="music_search.html" class="navbar-brand"><span style="font-size: 15px" class="glyphicon glyphicon-music" aria-hidden="true"></span> MUSIC EC</a>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-6 col-sm-8">
                     <ul class="nav navbar-nav navbar-right">
+                        
                         <li class="nav-li"><a href="user.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> MY PAGE</a></li>
+                        
+                        <li class="nav-li"><a href="my_libtaty.html"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> MY LIBRARY</a></li>
+                        
                         <li class="nav-li"><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> CART</a></li>
+                        
+                        <li class="nav-li"><a href="user_search.html"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> USER SEACH</a></li>
+                        
                         <li class="nav-li"><a href="login_register.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> LOGOUT</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </div>
-  
+       
+    
 <!--  body  -->
     <div class="container-fluid">
         <div class="row main">
             <h1>USER SEARCH</h1>
-                <form>
-                    
-                    
-                    <div class="col-lg-12 table-responsive">
-                    <table  class="table">
-                        <thead>
-                        <tr>
-                            <th>LOGIN ID</th>
-                            <th>USER NAME</th>
-                            <th>BIRTH DATE</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        
-                        <tbody>
-                            <tr>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                            <td><input type="date"> ~ <input type="date"></td>
-                            <td><input type="button" value="SEARCH" class="btn btn-primary" style="display:inline"></td><br>
-                        </tr>
-                        </tbody>        
-                    </table>
-                    </div>  
-                </form>
+            <form>
+                <div class="col-lg-2 col-xs-6 col-sm-6 col-md-6">
+                    <h4>LOGIN ID</h4>
+                    <input type="text">
+                </div>
+                <div class="col-lg-3 col-xs-6 col-sm-6 col-md-6">
+                    <h4>NAME</h4>
+                    <input type="text">
+                </div>
+                <div class="col-lg-4 col-xs-12 col-sm-6 col-md-6" id="birthdate">
+                    <h4>BRITH DATE</h4>
+                    <input type="date" id="birth"> ~
+                    <input type="date" id="birth">
+                </div>
+                <div class="col-lg-3 col-xs-12 col-sm-6 col-md-6">
+                    <h4></h4><input type="button" value="SEARCH" class="btn btn-primary block-mt" style="display:inline">
+                </div>
+            </form><br>
             
             
-            <h4>RESULT</h4>
+            <h4 class="col-xs-12">RESULT</h4>
                 <div class="col-lg-12 table-responsive">
                     <table  class="table table-hover">
                          <thead>
@@ -77,37 +78,37 @@
                                 <td>ididididi</td>
                                 <td>namename</td>
                                 <td>yyyy年MM月dd日</td>
-                                <td><a href="">詳細</a></td>
+                                <td><a href="user.html">詳細</a></td>
                             </tr>
                             <tr>
                                 <td>ididididi</td>
                                 <td>namename</td>
                                 <td>yyyy年MM月dd日</td>
-                                <td><a href="">詳細</a></td>
+                                <td><a href="user.html">詳細</a></td>
                             </tr>
                             <tr>
                                 <td>ididididi</td>
                                 <td>namename</td>
                                 <td>yyyy年MM月dd日</td>
-                                <td><a href="">詳細</a></td>
+                                <td><a href="user.html">詳細</a></td>
                             </tr>
                             <tr>
                                 <td>ididididi</td>
                                 <td>namename</td>
                                 <td>yyyy年MM月dd日</td>
-                                <td><a href="">詳細</a></td>
+                                <td><a href="user.html">詳細</a></td>
                             </tr>
                             <tr>
                                 <td>ididididi</td>
                                 <td>namename</td>
                                 <td>yyyy年MM月dd日</td>
-                                <td><a href="">詳細</a></td>
+                                <td><a href="user.html">詳細</a></td>
                             </tr>
                             <tr>
                                 <td>ididididi</td>
                                 <td>namename</td>
                                 <td>yyyy年MM月dd日</td>
-                                <td><a href="">詳細</a></td>
+                                <td><a href="user.html">詳細</a></td>
                             </tr>
                         </tbody>           
                     </table>

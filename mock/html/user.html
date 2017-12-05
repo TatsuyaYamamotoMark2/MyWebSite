@@ -11,24 +11,31 @@
 </head>
 <body>  
  <!-- navbar -->
+    
     <div class="container">
         <div class="row">
             <nav class="navbar navbar-default navbar-fixed-top bg-theme">
-
-                <div class="col-xs-6">
+                <div class="col-xs-6 col-sm-4">
                     <a href="music_search.html" class="navbar-brand"><span style="font-size: 15px" class="glyphicon glyphicon-music" aria-hidden="true"></span> MUSIC EC</a>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-6 col-sm-8">
                     <ul class="nav navbar-nav navbar-right">
+                        
                         <li class="nav-li"><a href="user.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> MY PAGE</a></li>
+                        
+                        <li class="nav-li"><a href="my_libtaty.html"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> MY LIBRARY</a></li>
+                        
                         <li class="nav-li"><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> CART</a></li>
+                        
+                        <li class="nav-li"><a href="user_search.html"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> USER SEACH</a></li>
+                        
                         <li class="nav-li"><a href="login_register.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> LOGOUT</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </div>
-  
+       
 <!--  user  -->
 
     <div class="container-fluid">
@@ -54,146 +61,12 @@
                         <p class="block-mb">yyyy年MM月d日HH:mm:ss</p>
                         <p>CREATEDATE</p>
                         <p class="block-mb">yyyy年MM月d日HH:mm:ss</p>
-                        <input type="button" class="btn btn-primary block-mt" value="UPDATE">
-                        <input type="button" class="btn btn-danger block-mt" value="DELETE">(admin_only)
-                        <input type="button" class="btn btn-success block-mt" value="ADMIN MENU">(admin_only)
+                        <a type="button" href="user.html" class="btn btn-primary block-mt linkBtn" value="UPDATE">UPDATE</a>
+                        <a type="button" href="libtaty.html" class="btn btn-info block-mt linkBtn" value="SONG ">LIST</a>
+                        <a type="button" href="result.html" class="btn btn-danger block-mt linkBtn" value="DELETE">DELETE</a>
+                        <a href="update_menu.html" class="btn btn-success block-mt linkBtn">admin menu</a>
                     </div> 
                     </form>
-                </div>
-            </div>
-<!--  Library  -->
-            <div class="main">
-            <h1>MY LIBRARY</h1>
-                <div class="row flex">
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
-
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <img src="../img/no.jpeg" class="library_img"><br>
-                        <a>ALBUM_NAME</a><br>
-                        <a>ARTIST_NAME</a>
-                    </div>
-
                 </div>
             </div>
 </body>
