@@ -65,13 +65,11 @@ public class User_search extends HttpServlet {
 		}else{//nullだった,全フォーム未入力なので以下findAll
 			List<UserBeans> usl1 = umd.findAll();
 			if(usl1 != null) {
-				System.out.println("ここ");
 				request.setAttribute("usl", usl1);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_search.jsp");
 				dispatcher.forward(request, response);
 			}else{
 
-				System.out.println("こっち");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_search.jsp");
 				dispatcher.forward(request, response);
 			}

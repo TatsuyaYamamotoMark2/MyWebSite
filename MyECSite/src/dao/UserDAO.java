@@ -13,7 +13,59 @@ import beans.UserBeans;
 
 public class UserDAO {
 
+	//パスワード以外更新
+		public boolean updateUser1(String login_id,String name, String birth_date,String email, String id) {
+			Connection conn = null;
+			try {
+				conn = DBManager.getConnection();
+				String sql = "update music_ec.user set login_id = ? ,name = ?, birth_date = ?,email = ? ,update_date = now() where user_id = ?";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+				pStmt.setString(1, login_id);
+				pStmt.setString(2, name);
+				pStmt.setString(3, birth_date);
+				pStmt.setString(4, email);
+				pStmt.setString(5, id);
+				pStmt.executeUpdate();
+				return true;
 
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+
+			} finally {
+				closeConn(conn);
+			}
+		}
+	//更新
+		public boolean updateUser(String login_id,String name, String password,String birth_date,String email,String id ) {
+			Connection conn = null;
+			try {
+				// データベースへ接続
+				conn = DBManager.getConnection();
+
+				// insert文を準備
+				String sql = "update music_ec.user set login_id = ?, name = ?, password = ?, birth_date = ? ,email = ?,update_date = now() where user_id = ?";
+				// insertに値を詰めて
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+				pStmt.setString(1, login_id);
+				pStmt.setString(2, name);
+				pStmt.setString(3, password);
+				pStmt.setString(4, birth_date);
+				pStmt.setString(5, email);
+				pStmt.setString(6, id);
+				//実行
+				pStmt.executeUpdate();
+				return true;
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+				return false;
+
+			} finally {
+				closeConn(conn);
+			}
+		}
 	//検索
 		public List<UserBeans> userSearch(String login_id, String name, String birth_date_from, String birth_date_to) {
 			Connection conn = null;

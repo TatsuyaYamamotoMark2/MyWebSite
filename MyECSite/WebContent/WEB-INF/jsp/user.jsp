@@ -18,29 +18,32 @@
 
 	<div class="container-fluid">
 		<div class="row main border-bot">
+			<p class ="error">${errorMessage}</p>
+			<p class ="result">${resultMessage}</p>
 			<h1>USERDETAIL</h1>
 				<form action="Update" method="post">
+				<input type ="hidden" value="${usd.id}" name="user_id">
 				<div class="col-xs-6">
 					<c:choose>
 					<c:when test="${sessionScope.usb.id == 1}">
 					<p>USER ID</p>
-					<input type="text" class="block-mb" value="${usd.login_id}"required>
+					<input type="text" class="block-mb" value="${usd.login_id}" required name="login_id">
 					<p>NAME</p>
-					<input type="text" class="block-mb" value="${usd.name}"required>
+					<input type="text" class="block-mb" value="${usd.name}"required name="name">
 					<p>BIRTH DATE</p>
-					<input type="date" class="block-mb" value="${usd.birth_date }"required>
+					<input type="date" class="block-mb" value="${usd.birth_date }"required name="birth_date">
 					<p>PASSWORD</p>
-					<input type="password" class="block-mb">
+					<input type="password" class="block-mb" name="password">
 					<p>EENTER PASSWORD</p>
-					<input type="password" class="block-mb">
+					<input type="password" class="block-mb" name="verification_password">
 				</div>
 				<div class="col-xs-6">
 					<p>E-MAIL</p>
-					<input type="text" class="block-mb" value="${usd.email}"required>
+					<input type="text" class="block-mb" value="${usd.email}"required name="email">
 					<p>UPDATE</p>
 					<p class="block-mb">${usd.format_Update_date}</p>
 					<p>CREATEDATE</p>
-					<p class="block-mb">yyyy年MM月d日HH:mm:ss</p>
+					<p class="block-mb">${usd.format_Create_date}</p>
 					<input type="submit" class="btn btn-primary block-mt linkBtn " value="UPDATE">
 					<a type="button" href="libtaty.html" class="btn btn-info block-mt linkBtn">MUSIC LIST</a>
 					<a type="button" href="result.html" class="btn btn-danger block-mt linkBtn">DELETE</a>
@@ -48,19 +51,19 @@
 				</c:when>
 				<c:when test="${sessionScope.usb.id == usd.id}">
 					<p>USER ID</p>
-					<input type="text" class="block-mb" value="${usd.login_id }"required>
+					<input type="text" class="block-mb" value="${usd.login_id }"required name="login_id">
 					<p>NAME</p>
-					<input type="text" class="block-mb" value="${usd.name }"required>
+					<input type="text" class="block-mb" value="${usd.name }"required name="name">
 					<p>BIRTH DATE</p>
-					<input type="date" class="block-mb" value="${usd.birth_date }"required>
+					<input type="date" class="block-mb" value="${usd.birth_date }"required name="birth_date">
 					<p>PASSWORD</p>
-					<input type="password" class="block-mb">
+					<input type="password" class="block-mb" name="password">
 					<p>EENTER PASSWORD</p>
-					<input type="password" class="block-mb">
+					<input type="password" class="block-mb" name="verification_password">
 				</div>
 				<div class="col-xs-6">
 					<p>E-MAIL</p>
-					<input type="text" class="block-mb" value="${usd.email}"required>
+					<input type="text" class="block-mb" value="${usd.email}"required name="email">
 					<p>UPDATE</p>
 					<p class="block-mb">${usd.format_Update_date }</p>
 					<p>CREATEDATE</p>

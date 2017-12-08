@@ -40,14 +40,12 @@ public class Login_register extends HttpServlet {
 
 		if(usb != null) {//なんかとれた
 			// ログインできたから一覧画面へ
-			System.out.println("ログインしました");
 			HttpSession session = request.getSession();
 			session.setAttribute("usb", usb);
 			response.sendRedirect("Music_search");
 
 		}else{//nullだった
 			String errorMessage = "ログインIDまたはパスワードが異なります。";
-			System.out.println(errorMessage);
 			request.setAttribute("errorMessage", errorMessage);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login_register.jsp");
 			dispatcher.forward(request, response);
