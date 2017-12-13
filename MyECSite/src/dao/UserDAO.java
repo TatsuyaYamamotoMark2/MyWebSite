@@ -13,6 +13,30 @@ import beans.UserBeans;
 
 public class UserDAO {
 
+
+	//ユーザー削除
+	public boolean deleteUser(String id) {
+		Connection conn = null;
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
+
+			// insert文を準備
+			String sql = "DELETE from music_ec.user WHERE user_id = ?";
+			// insertを実行
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, id);
+			pStmt.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+
+		} finally {
+			closeConn(conn);
+		}
+	}
 	//パスワード以外更新
 		public boolean updateUser1(String login_id,String name, String birth_date,String email, String id) {
 			Connection conn = null;

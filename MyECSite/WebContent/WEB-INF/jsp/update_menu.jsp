@@ -10,6 +10,7 @@
 <link href="../CSS/main.css" rel="stylesheet">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+
 <script src="../js/select2-4.0.6-rc.1/dist/js/select2.min.js"></script>
 <script src="../js/selectfanction.js"></script>
 </head>

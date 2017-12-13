@@ -46,8 +46,13 @@
 					<p class="block-mb">${usd.format_Create_date}</p>
 					<input type="submit" class="btn btn-primary block-mt linkBtn " value="UPDATE">
 					<a type="button" href="libtaty.html" class="btn btn-info block-mt linkBtn">MUSIC LIST</a>
-					<a type="button" href="result.html" class="btn btn-danger block-mt linkBtn">DELETE</a>
+			</form>
+					<form id="delete_form" action="User_delete" method="post">
+					<input type ="hidden" value="${usd.id}" name="user_id" form="delete_form">
+					<input type="submit" class="btn btn-danger block-mt linkBtn" value="DELETE" form="delete_form"></form>
+
 					<a href="update_menu.html" class="btn btn-success block-mt linkBtn">admin menu</a>
+				</div>
 				</c:when>
 				<c:when test="${sessionScope.usb.id == usd.id}">
 					<p>USER ID</p>
@@ -70,6 +75,8 @@
 					<p class="block-mb">${usd.format_Create_date }</p>
 					<input type="submit" class="btn btn-primary block-mt linkBtn " value="UPDATE">
 					<a type="button" href="Library" class="btn btn-info block-mt linkBtn">MUSIC LIST</a>
+				</div>
+			</form>
 				</c:when>
 				<c:otherwise>
 					<p>USER ID</p>
@@ -85,10 +92,10 @@
 					<p>CREATEDATE</p>
 					<p class="block-mb">${usd.format_Create_date }</p>
 					<a type="button" href="libtaty.html" class="btn btn-info block-mt linkBtn">MUSIC LIST</a>
-				</c:otherwise>
-				</c:choose>
 				</div>
 			</form>
+				</c:otherwise>
+				</c:choose>
 		</div>
 	</div>
 </body>

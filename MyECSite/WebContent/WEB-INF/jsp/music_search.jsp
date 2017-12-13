@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,6 +11,8 @@
 <link href="CSS/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 <link href="CSS/main.css" rel="stylesheet">
 <script type="text/javascript" src="CSS/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
 <!-- navbar -->
@@ -16,126 +21,28 @@
             <div class="main">
             <h1>STORE</h1>
 
-                <form>
-                <input type="text">
-                <input type="button" value="SEARCH" class="btn btn-primary" style="display:inline"><br>
-                <input type="radio" name="searchDetail" value="album">ALBUM
-                <input type="radio" name="searchDetail" value="artist">ARTIST
-                <input type="radio" name="searchDetail" value="music">MUSIC
-                <input type="radio" name="searchDetail" value="keyword" checked="checked">KEYWORD
+                <form action="Music_search" method="post">
+                <input type="text" name="search_value">
+                <input type="submit" value="SEARCH" class="btn btn-primary" style="display:inline"><br>
+                <input type="radio" name="searchPattern" value="album.al_name">ALBUM
+                <input type="radio" name="searchPattern" value="artist.ar_name">ARTIST
+                <input type="radio" name="searchPattern" value="music.m_name">MUSIC
+                <input type="radio" name="searchPattern" value="keyword" checked="checked">KEYWORD
                 </form>
 
 
 
 
-                <div class="row flex">
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                        <a href="album_details.html"><img src="../img/no.jpeg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
+                <div class="row flex  block-mt">
+                	<c:forEach var="albList" items="${albList}">
 
-                    </div>
                     <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/1.jpeg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/2.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/3.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/4.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/5.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/6.png" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/7.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/9.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/2.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/10.png" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/1.jpeg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/2.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/3.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/4.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/5.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/6.png" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/7.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/9.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/2.jpg" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6 text-center">
-                         <a href="album_details.html"><img src="../img/10.png" class="library_img"></a><br>
-                        <a>ALBUM_NAME</a><br>
-                        <p>¥9999-</p><br>
+                        <a href="Album_detail?al_id=${albList.al_id}"><img src="./img/${albList.image}" class="library_img"></a><br>
+                        <a href="Album_detail?al_id=${albList.al_id}">${albList.al_name }</a><br>
+                        <a href="Album_detail?al_id=${albList.al_id}">¥${albList.al_price }-</a><br>
                     </div>
 
+                </c:forEach>
                 </div>
             </div>
 </body>

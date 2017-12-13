@@ -78,9 +78,6 @@ flex-wrap: wrap;
 td {
 white-space: nowrap;
 }
-audio{
-    width: 64px;
-}
 #birthdate{
     margin-left: 0px;
     margin-right: 0px;
@@ -93,6 +90,6 @@ audio{
 .error{
     color:#f98888;
 }
-.result{
+.result{s
 	color:#68be5c;
 }

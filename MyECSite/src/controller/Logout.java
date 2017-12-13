@@ -24,7 +24,7 @@ public class Logout extends HttpServlet {
 			dispatcher.forward(request, response);
 
 		} else {
-
+		request.getSession().removeAttribute("cart");
 		request.getSession().removeAttribute("usb");
 		String logout = "ログアウトしました";
 		System.out.println(logout);
