@@ -79,8 +79,7 @@
 			</form>
 				</c:when>
 				<c:otherwise>
-					<p>USER ID</p>
-					<p class="block-mb">${usd.login_id}
+
 					<p>NAME</p>
 					<p class="block-mb">${usd.name}
 					<p>BIRTH DATE</p>

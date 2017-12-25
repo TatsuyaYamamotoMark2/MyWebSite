@@ -20,11 +20,11 @@
 		<div class="row main">
 			<h1>USER SEARCH</h1>
 				<form action="User_search" method="post">
-					<div class="col-lg-2 col-xs-6 col-sm-6 col-md-6">
-						<h4>LOGIN ID</h4>
-						<input type="text" name=login_id size=15>
-					</div>
-					<div class="col-lg-3 col-xs-6 col-sm-6 col-md-6">
+<!-- 					<div class="col-lg-2 col-xs-6 col-sm-6 col-md-6">
+ -->						<!-- <h4>LOGIN ID</h4> -->
+						<input type="hidden" name=login_id size=15>
+<!-- 					</div>
+ -->					<div class="col-lg-3 col-xs-6 col-sm-6 col-md-6">
 						<h4>NAME</h4>
 						<input type="text" name="name" size=15>
 					</div>
@@ -44,7 +44,7 @@
 					<table  class="table table-hover">
 						<thead>
 							<tr>
-								<th>LOGIN ID</th>
+
 								<th>USER NAME</th>
 								<th>BIRTH DATE</th>
 								<th></th>
@@ -55,7 +55,7 @@
 						<c:forEach var="usbList" items="${usbList}">
 
 							<tr>
-								<td>${usbList.login_id}</td>
+
 								<td>${usbList.name}</td>
 								<td>${usbList.format_Birth_date}</td>
 								<td><a href="User?id=${usbList.id}">詳細</a></td>

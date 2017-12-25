@@ -28,7 +28,7 @@ import dao.MusicDAO;
  * Servlet implementation class Update_Music
  */
 @WebServlet("/Update_Music")
-@MultipartConfig(location="/tmp", maxFileSize=3145728)
+@MultipartConfig(location="/tmp", maxFileSize=78643200)
 public class Update_Music extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -101,7 +101,6 @@ public class Update_Music extends HttpServlet {
 				String price = request.getParameter("price"+i);
 				String mp3 = request.getParameter("mp3File"+i);
 				String dl = request.getParameter("waveFile"+i);
-
 				String id = request.getParameter("m_id"+i);
 				String delete = request.getParameter("delete"+i);
 				Part mp3P = null;

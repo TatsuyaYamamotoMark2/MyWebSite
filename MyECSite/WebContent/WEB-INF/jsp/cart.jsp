@@ -48,7 +48,7 @@
 				<td><a href= Album_detail?al_id=${cart.al_id}><img src="./img/${cart.image}" class="cart_img"></a><br></td>
 				<td><a href= Album_detail?al_id=${cart.al_id}>${cart.m_name }</a></td>
 				<td><a href= Album_detail?al_id=${cart.al_id}>${cart.al_name }</a></td>
-				<td><a href="music_search.html">${cart.ar_name }</a></td>
+				<td><p>${cart.ar_name }</p></td>
 				<td><p href="">¥${cart.m_price }-</p></td>
 					<input type="hidden" value="${cart.m_name }" name="m_name">
 					<input type="hidden" value="${cart.m_id}" name="m_id">

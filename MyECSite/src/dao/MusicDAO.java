@@ -88,7 +88,8 @@ public class MusicDAO {
 						+ "ON music_ec.music.ar_id = music_ec.artist.ar_id "
 						+ "JOIN music_ec.album "
 						+ "ON music_ec.music.al_id = music_ec.album.al_id "
-						+ " where music_ec.music.al_id = ?";
+						+ " where music_ec.music.al_id = ?"
+						+ "ORDER BY track_no";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, album_id);
 			ResultSet rs = pStmt.executeQuery();
@@ -114,6 +115,7 @@ public class MusicDAO {
 		} finally {
 			closeConn(conn);
 			}
+
 		return musicList;
 	}
 	//DB切断
