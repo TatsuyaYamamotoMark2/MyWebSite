@@ -61,35 +61,35 @@ public class UserDAO {
 			}
 		}
 	//更新
-		public boolean updateUser(String login_id,String name, String password,String birth_date,String email,String id ) {
-			Connection conn = null;
-			try {
-				// データベースへ接続
-				conn = DBManager.getConnection();
+	public boolean updateUser(String login_id,String name, String password,String birth_date,String email,String id ) {
+		Connection conn = null;
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
 
-				// insert文を準備
-				String sql = "update music_ec.user set login_id = ?, name = ?, password = ?, birth_date = ? ,email = ?,update_date = now() where user_id = ?";
-				// insertに値を詰めて
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setString(1, login_id);
-				pStmt.setString(2, name);
-				pStmt.setString(3, password);
-				pStmt.setString(4, birth_date);
-				pStmt.setString(5, email);
-				pStmt.setString(6, id);
-				//実行
-				pStmt.executeUpdate();
-				return true;
+			// insert文を準備
+			String sql = "update music_ec.user set login_id = ?, name = ?, password = ?, birth_date = ? ,email = ?,update_date = now() where user_id = ?";
+			// insertに値を詰めて
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, login_id);
+			pStmt.setString(2, name);
+			pStmt.setString(3, password);
+			pStmt.setString(4, birth_date);
+			pStmt.setString(5, email);
+			pStmt.setString(6, id);
+			//実行
+			pStmt.executeUpdate();
+			return true;
 
-			} catch (SQLException e) {
+		} catch (SQLException e) {
 
-				e.printStackTrace();
-				return false;
+			e.printStackTrace();
+			return false;
 
-			} finally {
-				closeConn(conn);
-			}
+		} finally {
+			closeConn(conn);
 		}
+	}
 	//検索
 		public List<UserBeans> userSearch(String login_id, String name, String birth_date_from, String birth_date_to) {
 			Connection conn = null;

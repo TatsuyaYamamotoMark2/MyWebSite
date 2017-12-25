@@ -10,20 +10,28 @@
 <link href="CSS/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 <link href="CSS/main.css" rel="stylesheet">
 <script type="text/javascript" src="CSS/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-</head>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script></head>
 <body>
 <!-- navbar -->
 <jsp:include page="../include/header.jsp" />
 <!--  body  -->
 <div class="container-fluid">
 	<div class="row main">
-	<form>
+	<form action="Purchase" method="post">
 		<div class="col-lg-12">
-			<p class="result">${resultMessage}</p>
-			<p class="error">${errorMessage}</p>
+			<p class="result">${resultMessage}　</p>
+			<p class="error">${errorMessage}　</p>
 			<h1>CART</h1>
-			<h4>TOTAL PRICE</h4>
-			<a href="result.html" type="button" value="¥99999-  LIQUIDATION" class="btn btn-primary">¥99999-  LIQUIDATION</a><br>
+				<c:if test="${cart == null}" var="flg" />
+
+				<c:if test="${!flg}" >
+					<input type="submit" value="¥${cartPrice}-  Purchase" class="btn btn-primary"><br>
+				</c:if>
+
+				<c:if test="${flg}" >
+				<input type="button" value="EMPTY CART" class="btn btn-Default"><br>
+				</c:if>
+
 		</div>
 	</form>
 </div>
@@ -42,7 +50,9 @@
 				<td><a href= Album_detail?al_id=${cart.al_id}>${cart.al_name }</a></td>
 				<td><a href="music_search.html">${cart.ar_name }</a></td>
 				<td><p href="">¥${cart.m_price }-</p></td>
+					<input type="hidden" value="${cart.m_name }" name="m_name">
 					<input type="hidden" value="${cart.m_id}" name="m_id">
+					<input type="hidden" value="${cart.al_id}" name="al_id">
 				<td><input type="submit" class="btn btn-primary inBtn" value="remove"></td>
 			</tr>
 			</form>

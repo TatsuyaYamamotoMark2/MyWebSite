@@ -28,6 +28,8 @@
 	<div class="container-fluid">
 		<div class="row main">
 			<div class="col-lg-12">
+				<p class="result">${resultMessage}　</p>
+				<p class="error">${errorMessage}　</p>
 				<h1>${albumBean.al_name }</h1>
 			</div>
 			<div class="col-xs-6">
@@ -35,8 +37,21 @@
 			</div>
 			<div class="col-xs-6">
 				<p>RELEASE DATE : ${albumBean.format_Release_date}</p>
-				<h4>ALBUM PRICE</h4>
-				<a href="cart.html" type="button"  class="btn btn-primary">¥${albumBean.al_price }- ADD CART</a><br>
+
+
+						<c:choose>
+							<c:when test="${albumBean.purchased}">
+								<input type="button" value="PURCHASED TRACK" class="btn btn-Default"><br>
+							</c:when>
+							<c:when test="${!albumBean.add_cart}">
+								<h4>ALBUM PRICE</h4>
+								<a href="AddAlbum?al_id=${albumBean.al_id }" type="button"  class="btn btn-primary">¥${albumBean.al_price }- ADD CART</a><br>
+							</c:when>
+							<c:when test="${albumBean.add_cart}">
+								<input type="button" value="ADDED CART" class="btn btn-Default"><br>
+							</c:when>
+						</c:choose>
+
 			</div>
 		</div>
 <!--    CONTENT      -->
@@ -55,26 +70,45 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="musicList" items="${musicList}">
+
+				<c:forEach var="music" items="${musicList}">
 					<form action="AddCart" method="post">
 					<tr class="row">
-						<td class="col-sm-1">${musicList.track_no }.</td>
-						<td class="col-sm-4">${musicList.m_name }</td>
-						<td class="col-sm-4">${musicList.ar_name}</td>
-						<td class="col-sm-1">¥${musicList.m_price}-</td>
+						<td class="col-sm-1">${music.track_no }.</td>
+						<td class="col-sm-4">${music.m_name }</td>
+						<td class="col-sm-4">${music.ar_name}</td>
+						<td class="col-sm-1">¥${music.m_price}-</td>
 						<td class="col-sm-1">
-							<c:if test="${musicList.mp3 == null}" var="flg" />
-							<c:if test="${flg}" >
-							</c:if>
-							<c:if test="${!flg}" >
+						<c:if test="${music.mp3 == null}" var="flg" />
+						<c:if test="${!flg}" >
 								<div class="mediPlayer">
-								<audio class="listen" src="./mp3/${musicList.mp3}" controlslist="nodownload" data-size="25"></audio></div>
-						</td></c:if>
-						<input type="hidden" value="${musicList.m_id}" name="m_id">
-						<td class="col-sm-1"><input type="submit" value="ADD CART" class="btn btn-primary inBtn"><br></td>
+								<audio class="listen" src="./mp3/${music.mp3}" controlslist="nodownload" data-size="25"></audio></div>
+						</td>
+						</c:if>
+						<input type="hidden" value="${music.m_id}" name="m_id">
+						<input type="hidden" value="${music.al_id}" name="al_id">
+
+
+						<c:choose>
+
+							<c:when test="${music.purchased}">
+							<td class="col-sm-1"><a href=" ./wave/${music.DL_path }"  download = "${music.DL_path }" type="button" value="DOWNLOAD" class="btn btn-success inBtn" >DOWNLOAD</a><br></td>
+							</c:when>
+							<c:when test="${!music.add_cart}">
+							<td class="col-sm-1"><input type="submit" value="ADD CART" class="btn btn-primary inBtn"><br></td>
+							</c:when>
+							<c:when test="${music.add_cart}">
+							<td class="col-sm-1"><input type="button" value="ADDED CART" class="btn btn-Default inBtn"><br></td>
+							</c:when>
+
+						</c:choose>
+
+
+
 					</tr>
 					</form>
 				</c:forEach>
+
 				</tbody>
 			</table>
 		</div>

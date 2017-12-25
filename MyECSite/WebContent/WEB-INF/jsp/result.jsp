@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -19,7 +21,7 @@
             <div class="col-lg-12">
                 <h1>RESULT</h1>
                 <p class="result">${resultMessage}</p>
-                <a href="${link}" class="btn btn-primary">BACK ${buttonValue}</a><br>
+                <a href="${link}" class="btn btn-primary">${buttonValue}</a><br>
             </div>
             </form>
         </div>

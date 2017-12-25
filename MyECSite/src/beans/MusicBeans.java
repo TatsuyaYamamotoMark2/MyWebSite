@@ -22,6 +22,10 @@ public class MusicBeans implements Serializable {
 	private String ar_name;
 	private String al_price;
 
+	private boolean purchased;
+	private boolean add_cart;
+
+
 
 
 
@@ -185,6 +189,34 @@ public class MusicBeans implements Serializable {
 
 
 	public void setAl_price(String ar_price) {
+
 		this.al_price = ar_price;
 	}
+
+
+
+
+
+	public boolean isAdd_cart() {
+		return add_cart;
+	}
+
+
+	public void setAdd_cart(boolean add_cart) {
+		this.add_cart = add_cart;
+	}
+
+
+	public boolean isPurchased() {
+		return purchased;
+	}
+
+
+	public void setPurchased(boolean purchased) {
+		this.purchased = purchased;
+	}
+
+
+
+
 }

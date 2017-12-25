@@ -10,7 +10,7 @@
 <link href="CSS/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 <link href="CSS/main.css" rel="stylesheet">
 <script type="text/javascript" src="CSS/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-</head>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script></head>
 <body>
 <!-- navbar -->
 <jsp:include page="../include/header.jsp" />
@@ -27,31 +27,31 @@
 					<c:choose>
 					<c:when test="${sessionScope.usb.id == 1}">
 					<p>USER ID</p>
-					<input type="text" class="block-mb" value="${usd.login_id}" required name="login_id">
+					<input type="text" class="block-mb"size="15"  value="${usd.login_id}" required name="login_id">
 					<p>NAME</p>
-					<input type="text" class="block-mb" value="${usd.name}"required name="name">
+					<input type="text" class="block-mb" size="15" value="${usd.name}"required name="name">
 					<p>BIRTH DATE</p>
-					<input type="date" class="block-mb" value="${usd.birth_date }"required name="birth_date">
+					<input type="date" class="block-mb "size="15"  value="${usd.birth_date }"required name="birth_date">
 					<p>PASSWORD</p>
-					<input type="password" class="block-mb" name="password">
+					<input type="password" class="block-mb " size="15" name="password">
 					<p>EENTER PASSWORD</p>
-					<input type="password" class="block-mb" name="verification_password">
+					<input type="password" class="block-mb " size="15" name="verification_password">
 				</div>
 				<div class="col-xs-6">
 					<p>E-MAIL</p>
-					<input type="text" class="block-mb" value="${usd.email}"required name="email">
+					<input type="text" class="block-mb "size="15"  value="${usd.email}"required name="email">
 					<p>UPDATE</p>
 					<p class="block-mb">${usd.format_Update_date}</p>
 					<p>CREATEDATE</p>
 					<p class="block-mb">${usd.format_Create_date}</p>
 					<input type="submit" class="btn btn-primary block-mt linkBtn " value="UPDATE">
-					<a type="button" href="libtaty.html" class="btn btn-info block-mt linkBtn">MUSIC LIST</a>
+					<a type="button" href="Library?id=${usd.id }" class="btn btn-info block-mt linkBtn">MUSIC LIST</a>
 			</form>
 					<form id="delete_form" action="User_delete" method="post">
 					<input type ="hidden" value="${usd.id}" name="user_id" form="delete_form">
 					<input type="submit" class="btn btn-danger block-mt linkBtn" value="DELETE" form="delete_form"></form>
 
-					<a href="update_menu.html" class="btn btn-success block-mt linkBtn">admin menu</a>
+					<a href="Admin_menu" class="btn btn-success block-mt linkBtn">ADMIN MENU</a>
 				</div>
 				</c:when>
 				<c:when test="${sessionScope.usb.id == usd.id}">
@@ -74,7 +74,7 @@
 					<p>CREATEDATE</p>
 					<p class="block-mb">${usd.format_Create_date }</p>
 					<input type="submit" class="btn btn-primary block-mt linkBtn " value="UPDATE">
-					<a type="button" href="Library" class="btn btn-info block-mt linkBtn">MUSIC LIST</a>
+					<a type="button" href="Library?id=${usd.id }" class="btn btn-info block-mt linkBtn">MUSIC LIST</a>
 				</div>
 			</form>
 				</c:when>
@@ -91,7 +91,7 @@
 					<p class="block-mb">${usd.format_Update_date }</p>
 					<p>CREATEDATE</p>
 					<p class="block-mb">${usd.format_Create_date }</p>
-					<a type="button" href="libtaty.html" class="btn btn-info block-mt linkBtn">MUSIC LIST</a>
+					<a type="button" href="Library?id=${usd.id }" class="btn btn-info block-mt linkBtn">MUSIC LIST</a>
 				</div>
 			</form>
 				</c:otherwise>

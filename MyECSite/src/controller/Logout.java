@@ -27,8 +27,7 @@ public class Logout extends HttpServlet {
 		request.getSession().removeAttribute("cart");
 		request.getSession().removeAttribute("usb");
 		String logout = "ログアウトしました";
-		System.out.println(logout);
-		request.setAttribute("logout", logout);
+		request.setAttribute("resultMessage", logout);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login_register.jsp");
 		dispatcher.forward(request, response);
 		}

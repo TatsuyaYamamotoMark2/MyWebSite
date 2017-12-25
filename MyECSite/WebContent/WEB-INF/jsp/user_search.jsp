@@ -11,7 +11,7 @@
 <link href="CSS/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 <link href="CSS/main.css" rel="stylesheet">
 <script type="text/javascript" src="CSS/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-</head>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script></head>
 <body>
 <!-- navbar -->
 <jsp:include page="../include/header.jsp" />
@@ -22,16 +22,16 @@
 				<form action="User_search" method="post">
 					<div class="col-lg-2 col-xs-6 col-sm-6 col-md-6">
 						<h4>LOGIN ID</h4>
-						<input type="text" name=login_id>
+						<input type="text" name=login_id size=15>
 					</div>
 					<div class="col-lg-3 col-xs-6 col-sm-6 col-md-6">
 						<h4>NAME</h4>
-						<input type="text" name="name">
+						<input type="text" name="name" size=15>
 					</div>
 					<div class="col-lg-4 col-xs-12 col-sm-6 col-md-6" id="birthdate">
 						<h4>BRITH DATE</h4>
-						<input type="date" id="birth" name="birth_date_from"> ~
-						<input type="date" id="birth" name="birth_date_to">
+						<input type="date" id="birth" name="birth_date_from"size=15> ~
+						<input type="date" id="birth" name="birth_date_to"size=15>
 					</div>
 					<div class="col-lg-3 col-xs-12 col-sm-6 col-md-6">
 						<h4></h4><input type="submit" value="SEARCH" class="btn btn-primary block-mt" style="display:inline">

@@ -12,6 +12,34 @@ import beans.CartBeans;
 import beans.MusicBeans;
 
 public class MusicDAO {
+
+
+	/**
+	 * アーティストIDから楽曲に設定されているか調べる
+	 * @param id
+	 * @return
+	 */
+	public boolean findByArtist_id(String id) {
+		Connection conn = null;
+		try {
+			conn = DBManager.getConnection();
+			String sql = "SELECT * FROM music_ec.music WHERE ar_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, id);
+			ResultSet rs = pStmt.executeQuery();
+			//登録済みだった
+			if (rs.next()) {
+				return true;
+			}
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+			//未登録
+		} finally {
+			closeConn(conn);
+		}
+	}
 	//曲のIDで曲情報を返す
 	public CartBeans findByIdtoCart(String m_id) {
 	Connection conn = null;
@@ -66,6 +94,7 @@ public class MusicDAO {
 			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
 				MusicBeans mbList = new MusicBeans();
+				mbList.setAl_id(album_id);
 				mbList.setM_id(rs.getString("m_id"));
 				mbList.setAl_name(rs.getString("al_name"));
 				mbList.setImage(rs.getString("image"));
@@ -87,6 +116,7 @@ public class MusicDAO {
 			}
 		return musicList;
 	}
+	//DB切断
 	private void closeConn(Connection conn) {
 		if (conn != null) {
 			try {
@@ -96,4 +126,65 @@ public class MusicDAO {
 			}
 		}
 	}
+	/**
+	 * アルバムに楽曲を登録する
+	 * @param no
+	 * @param m_name
+	 * @param artist
+	 * @param price
+	 * @param mp3
+	 * @param dl
+	 * @param al_id
+	 * @return
+	 */
+	public boolean updateMusic(String no, String m_name, String artist, String price, String mp3, String dl, String al_id) {
+		Connection conn = null;
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
+
+			// insert文を準備
+			String sql = "insert into music_ec.music(al_id,ar_id,m_name,m_price,DL_path,mp3,track_no)values(?,?,?,?,?,?,?)";
+			// insertを実行
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, al_id);
+			pStmt.setString(2, artist);
+			pStmt.setString(3, m_name);
+			pStmt.setString(4, price);
+			pStmt.setString(5, dl);
+			pStmt.setString(6, mp3);
+			pStmt.setString(7, no);
+			pStmt.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+
+//			e.printStackTrace();
+			return false;
+
+		} finally {
+			closeConn(conn);
+		}
+	}
+	public void removeMusicByM_id(String id) {
+		Connection conn = null;
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
+
+			// insert文を準備
+			String sql = "DELETE from music_ec.music WHERE m_id = ?";
+			// insertを実行
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, id);
+			pStmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			closeConn(conn);
+		}
+	}
+
 }

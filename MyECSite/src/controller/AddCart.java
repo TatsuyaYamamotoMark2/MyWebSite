@@ -28,7 +28,7 @@ public class AddCart extends HttpServlet {
 			dispatcher.forward(request, response);
 		} else {
 			MusicDAO mdao = new MusicDAO();
-			CartBeans addcart = mdao.findByIdtoCart(request.getParameter("m_id"));
+	CartBeans addcart = mdao.findByIdtoCart(request.getParameter("m_id"));
 
 			if(addcart != null) {
 				//カートを用意
@@ -39,18 +39,11 @@ public class AddCart extends HttpServlet {
 				}
 				//カートに商品を追加。
 				cart.add(addcart);
-				String resultMessage = "カートに楽曲を追加しました";
-				request.setAttribute("resultMessage", resultMessage);
-				request.setAttribute("cart", cart);
 				session.setAttribute("cart", cart);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
-				dispatcher.forward(request, response);
-			}else{
+				response.sendRedirect("Album_detail?al_id=" + request.getParameter("al_id") + "&addFlg=1");
 
-				String errorMessage = "カート追加に失敗しました";
-				request.setAttribute("errorMessage", errorMessage);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
-				dispatcher.forward(request, response);
+			}else{
+				response.sendRedirect("Album_detail?al_id=" + request.getParameter("al_id"));
 			}
 		}
 	}

@@ -13,6 +13,11 @@ import java.util.Date;
 	private String release_date;
 	private String al_price;
 
+	private boolean purchased;
+	private boolean add_cart;
+
+
+
 
 	public AlbumBeans() {
 
@@ -67,5 +72,17 @@ import java.util.Date;
 			e.printStackTrace();
 		}
 		return release_date;
+	}
+	public boolean isPurchased() {
+		return purchased;
+	}
+	public void setPurchased(boolean purchased) {
+		this.purchased = purchased;
+	}
+	public boolean isAdd_cart() {
+		return add_cart;
+	}
+	public void setAdd_cart(boolean add_cart) {
+		this.add_cart = add_cart;
 	}
 }
