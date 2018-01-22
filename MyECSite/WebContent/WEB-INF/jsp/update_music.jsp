@@ -7,6 +7,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>update_music</title>
+<!-- favicon  -->
+<link rel="icon" href="./ico/favi.ico">
 <link href="CSS/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 <link href="js/select2-4.0.6-rc.1/dist/css/select2.css" rel="stylesheet">
 <link href="CSS/main.css" rel="stylesheet">

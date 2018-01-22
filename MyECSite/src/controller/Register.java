@@ -30,6 +30,17 @@ public class Register extends HttpServlet {
 		String verification_password = request.getParameter("verification_password");
 		String birth_date = request.getParameter("birth_date");
 		String email = request.getParameter("email");
+
+		//入力チェック
+		if(!UtillLogic.isStringCheck(login_id) || !UtillLogic.isStringCheck(password)) {
+			String errorMessage = "LOGIN ID,PASSWORDは半角英数字のみ使用できます";
+			errorForward(request, response, errorMessage);
+		}
+		if(!UtillLogic.isMailPattern(email)) {
+			String errorMessage = "メールアドレスの形式が正しくありません";
+			errorForward(request, response, errorMessage);
+		}
+
 		if (!(password.equals(verification_password))) {
 			String errorMessage = "パスワードと確認用パスワードが異なっています";
 			errorForward(request, response, errorMessage);

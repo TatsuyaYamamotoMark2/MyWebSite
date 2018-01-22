@@ -159,16 +159,6 @@ public class AlbumDAO {
 			}
 		return albumList;
 	}
-	//データベース切断
-	private void closeConn(Connection conn) {
-		if (conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
 	//含み検索
 	private String likeSearch(String str) {
 		if (str.indexOf("%") == -1) {
@@ -362,7 +352,6 @@ public class AlbumDAO {
 			pStmt.setString(2, image);
 			pStmt.setString(3, al_id);
 			pStmt.executeUpdate();
-			System.out.println(pStmt);
 			return true;
 
 		} catch (SQLException e) {
@@ -372,6 +361,16 @@ public class AlbumDAO {
 
 		} finally {
 			closeConn(conn);
+		}
+	}
+	//データベース切断
+	private void closeConn(Connection conn) {
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

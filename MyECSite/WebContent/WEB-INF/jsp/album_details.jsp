@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>album_details</title>
 
+<!-- favicon  -->
+<link rel="icon" href="./ico/favi.ico">
 <link rel="stylesheet" href="CSS/progres-bar.css">
 <link href="CSS/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 <link href="CSS/main.css" rel="stylesheet">
@@ -65,7 +67,7 @@
 						<th class="col-lg-4">TITLE</th>
 						<th class="col-lg-4">ARTIST</th>
 						<th class="col-lg-1">PRICE</th>
-						<th class="col-lg-1">SAMPLE</th>
+						<th class="col-lg-1"></th>
 						<th class="col-lg-1"></th>
 					</tr>
 				</thead>

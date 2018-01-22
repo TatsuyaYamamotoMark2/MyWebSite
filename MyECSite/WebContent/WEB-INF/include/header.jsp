@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <div class="container">
-	<div class="row">
+	<div class="row ">
 		<nav class="navbar navbar-default navbar-fixed-top bg-theme ">
 		<!-- Left menu -->
 			<div class="col-xs-6 col-sm-3">
@@ -18,7 +18,7 @@
 						<li class="nav-li"><a href="Login_register"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> LOGIN/REGISTER</a></li>
 					</c:if>
 					<c:if test="${!flg}" >
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnavi">
+					<button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#gnavi">
 					      <span class="sr-only">メニュー</span>
 					      <span class="icon-bar"></span>
 					      <span class="icon-bar"></span>

@@ -7,6 +7,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>album_details</title>
+<!-- favicon  -->
+<link rel="icon" href="./ico/favi.ico">
 <link href="CSS/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 <link href="CSS/main.css" rel="stylesheet">
 <script type="text/javascript" src="CSS/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
@@ -26,7 +28,7 @@
 				<div class="col-xs-6">
 					<c:choose>
 					<c:when test="${sessionScope.usb.id == 1}">
-					<p>USER ID</p>
+					<p>LOGIN ID</p>
 					<input type="text" class="block-mb"size="15"  value="${usd.login_id}" required name="login_id">
 					<p>NAME</p>
 					<input type="text" class="block-mb" size="15" value="${usd.name}"required name="name">
@@ -55,7 +57,7 @@
 				</div>
 				</c:when>
 				<c:when test="${sessionScope.usb.id == usd.id}">
-					<p>USER ID</p>
+					<p>LOGIN ID</p>
 					<input type="text" class="block-mb" value="${usd.login_id }"required name="login_id">
 					<p>NAME</p>
 					<input type="text" class="block-mb" value="${usd.name }"required name="name">

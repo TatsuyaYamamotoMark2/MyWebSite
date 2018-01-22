@@ -3,6 +3,7 @@ package base;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
@@ -14,9 +15,46 @@ public class UtillLogic {
 	public static String wave_UPLOAD_PATH = "/Users/yamatoraneco/git/MyWebSite/MyECSite/WebContent/wave/";
 
 	/**
+	 * メールアドレスの正規表現チェック
+	 * @param input チェック対象
+	 * @return	正規表現ならtrueを返す
+	 *
+	 */
+	public static boolean isMailPattern(String input) {
+		String pattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$" ;
+		Pattern p = Pattern.compile(pattern);
+		if(p.matcher(input).find()){
+			return true;
+		}else{
+		    return false;
+		}
+	}
+
+/**
+ * 文字列が半角英数のみで構成されているかをチェックする
+ *
+ * @param input チェック対象の文字列
+ * @return チェック結果。半角英数のみなら true そうでなければ false
+ */
+	public static boolean isStringCheck(String input) {
+		for(int i = 0; i < input.length(); i++) {
+			char c = input.charAt(i);
+			if( (c < '0' || c > '9') &&
+				(c < 'a' || c > 'z') &&
+				(c < 'A' || c > 'Z')
+			) {
+			return false;
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * リダイレクトした際のリザルトメッセージの設定
-	 * @param request
-	 * @return
+	 * @param	request	URLのaddFlgの値
+	 * @return	jspへ送るエラー、成功のメッセージ
+	 * 			 setMessage:緑文字で表示される成功メッセージ
+	 * 		setErrorMessage:	赤文字で表示される失敗メッセージ
 	 */
 	public static HttpServletRequest redirectResultMessage(HttpServletRequest request) {
 
@@ -74,7 +112,7 @@ public class UtillLogic {
 	/**
 	 * パスワードのMD5暗号化
 	 * @param password
-	 * @return
+	 * @return 暗号化された文字列を返す
 	 */
 	public static String convertPassword(String password) {
 		String result = null;

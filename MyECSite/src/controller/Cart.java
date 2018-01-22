@@ -46,7 +46,6 @@ public class Cart extends HttpServlet {
 			int cartPrice = 0;
 			for(CartBeans cartitem : cart) {
 				cartPrice += Integer.parseInt(cartitem.getM_price());
-				System.out.println(cartPrice);
 			}
 
 

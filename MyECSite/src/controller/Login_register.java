@@ -34,6 +34,16 @@ public class Login_register extends HttpServlet {
 		//フォームからの値をrequestしてgetParameter
 		String login_id = request.getParameter("login_id");
 		String password = UtillLogic.convertPassword(request.getParameter("password"));
+
+		//入力チェック
+		if(!UtillLogic.isStringCheck(login_id) || !UtillLogic.isStringCheck(password)) {
+			String errorMessage = "半角英数字のみ使用できます";
+			request.setAttribute("errorMessage", errorMessage);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login_register.jsp");
+			dispatcher.forward(request, response);
+		}
+
+
 		//Daoに送ってDBから取得してくる
 		UserDAO umd = new UserDAO();
 		UserBeans usb = umd.findByPass(login_id, password);
