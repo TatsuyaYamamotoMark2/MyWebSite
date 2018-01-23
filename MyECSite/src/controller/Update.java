@@ -17,12 +17,8 @@ import dao.UserDAO;
 public class Update extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Update() {
-        super();
-    }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	   	//文字化け退散おまじない
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String id = request.getParameter("user_id");
@@ -33,7 +29,6 @@ public class Update extends HttpServlet {
 		String birth_date = request.getParameter("birth_date");
 		String email =request.getParameter("email");
 
-//UserBeanにつめる
 		UserDAO umdf = new UserDAO();
 		UserBeans usd = umdf.findById(id);
 
@@ -64,6 +59,15 @@ public class Update extends HttpServlet {
 		}
 	}
 
+	/**
+	 * リクエストにエラーメッセージを設定しユーザー詳細画面へフォワード
+	 * @param request
+	 * @param response
+	 * @param resultMessage
+	 * @param usd
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void errorFowerd(HttpServletRequest request, HttpServletResponse response, String resultMessage, UserBeans usd)
 			throws ServletException, IOException {
 		request.setAttribute("usd", usd);
@@ -71,6 +75,15 @@ public class Update extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
 		dispatcher.forward(request, response);
 	}
+	/**
+	 * リクエストに成功メッセージを設定しユーザー詳細画面へフォワード
+	 * @param request
+	 * @param response
+	 * @param resultMessage
+	 * @param usd
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void resultFowerd(HttpServletRequest request, HttpServletResponse response, String resultMessage,UserBeans usd)
 			throws ServletException, IOException {
 		request.setAttribute("usd", usd);

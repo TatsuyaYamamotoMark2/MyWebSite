@@ -16,7 +16,7 @@ import beans.UserBeans;
  * @author yamamoto_tatsuya
  *
  */
-public class UserDAO {
+public class UserDAO  extends DBManager{
 
 	/**
 	 * ユーザーをDBから削除
@@ -354,7 +354,7 @@ public class UserDAO {
 		Connection conn = null;
 		try {
 			// データベースへ接続
-			conn = DBManager.getConnection();
+			conn = getConnection();
 			// SELECT文を準備
 			String sql = "SELECT * FROM music_ec.user WHERE login_id = ? and password = ?";
 
@@ -386,19 +386,6 @@ public class UserDAO {
 
 		} finally {
 			closeConn(conn);
-		}
-	}
-	/**
-	 * DBから切断
-	 * @param conn
-	 */
-	private void closeConn(Connection conn) {
-		if (conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 }

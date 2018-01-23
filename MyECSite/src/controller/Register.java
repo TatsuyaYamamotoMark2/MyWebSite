@@ -68,6 +68,14 @@ public class Register extends HttpServlet {
 			}
 		}
 	}
+	/**
+	 * リクエストにメッセージを設定してログイン画面へフォワード
+	 * @param request
+	 * @param response
+	 * @param errorMessage　表示したい文字列
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void errorForward(HttpServletRequest request, HttpServletResponse response, String errorMessage)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");

@@ -24,14 +24,7 @@ import dao.MusicDAO;
 public class Library extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Library() {
-        super();
 
-        // TODO Auto-generated constructor stub
-    }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
@@ -59,7 +52,6 @@ public class Library extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//文字化け退散おまじない
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		if ((UserBeans) session.getAttribute("usb") == null) {
@@ -96,7 +88,10 @@ public class Library extends HttpServlet {
 			}
 		}
 	}
-	//アルバム価格未設定の場合収録曲の合計値を代入
+	/**
+	 * アルバム価格未設定の場合収録曲の合計値を代入
+	 * @param albList
+	 */
 	private void checkPrice(List<AlbumBeans> albList) {
 		for(AlbumBeans list : albList) {
 			if(list.getAl_price() == null) {

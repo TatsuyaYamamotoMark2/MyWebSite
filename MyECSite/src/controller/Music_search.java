@@ -18,11 +18,6 @@ import dao.MusicDAO;
 @WebServlet("/Music_search")
 public class Music_search extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public Music_search() {
-        super();
-    }
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		//全アルバムの取得
@@ -71,7 +66,10 @@ public class Music_search extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 	}
-	//アルバム価格未設定の場合収録曲の合計値を代入
+	/**
+	 *アルバム価格未設定の場合収録曲の合計値を代入
+	 * @param albList
+	 */
 	private void checkPrice(List<AlbumBeans> albList) {
 		for(AlbumBeans list : albList) {
 			if(list.getAl_price() == null) {

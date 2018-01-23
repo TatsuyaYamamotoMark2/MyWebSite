@@ -29,7 +29,6 @@ public class RemoveCart extends HttpServlet {
 		} else {
 			for(CartBeans check : cart) {
 				if (check.getM_id().equals(request.getParameter("m_id"))) {
-					System.out.println("remove");
 					cart.remove(check);
 					break;
 				}

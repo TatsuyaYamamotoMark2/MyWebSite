@@ -24,14 +24,6 @@ import dao.MusicDAO;
 public class AddAlbumCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddAlbumCart() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
@@ -39,9 +31,7 @@ public class AddAlbumCart extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("Login_register");
 			dispatcher.forward(request, response);
 		} else {
-
 			ArrayList<CartBeans> cart = (ArrayList<CartBeans>) session.getAttribute("cart");
-
 			MusicDAO mdao = new MusicDAO();
 			List<MusicBeans> addAlbumCart = mdao.findByalbum_id(request.getParameter("al_id"));
 

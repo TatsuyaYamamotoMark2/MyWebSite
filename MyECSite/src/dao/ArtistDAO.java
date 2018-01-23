@@ -16,7 +16,7 @@ import beans.ArtistBeans;
  * @author yamamoto_tatsuya
  *
  */
-public class ArtistDAO {
+public class ArtistDAO  extends DBManager{
 
 
 	/**
@@ -46,20 +46,6 @@ public class ArtistDAO {
 			closeConn(conn);
 		}
 		return aritstList;
-	}
-
-	/**
-	 * DB切断
-	 * @param conn
-	 */
-	private void closeConn(Connection conn) {
-		if (conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 	/**

@@ -11,7 +11,7 @@ import base.DBManager;
  * @author yamamoto_tatsuya
  *
  */
-public class Buy_detailDAO {
+public class Buy_detailDAO  extends DBManager{
 
 	/**
 	 * 履歴に登録したときに生成した購入履歴IDと楽曲IDを登録
@@ -38,19 +38,6 @@ public class Buy_detailDAO {
 
 		} finally {
 			closeConn(conn);
-		}
-	}
-	/**
-	 * DB切断
-	 * @param conn
-	 */
-	private void closeConn(Connection conn) {
-		if (conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 }

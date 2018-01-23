@@ -16,7 +16,7 @@ import beans.AlbumBeans;
  * @author tatsuya_yamamoto
  *
  */
-public class AlbumDAO {
+public class AlbumDAO extends DBManager{
 
 	/**
 	 * キーワードから全テーブルへ検索をかけてアルバムインスタンスリストを返す
@@ -33,7 +33,7 @@ public class AlbumDAO {
 				search_value = "'" + search_value + "'";
 			}
 		try {
-			conn = DBManager.getConnection();
+			conn = getConnection();
 
 			String sql 	= "SELECT  album.al_id,al_name,image,release_date,al_price "
 						+ "FROM music_ec.music "
@@ -416,19 +416,6 @@ public class AlbumDAO {
 
 		} finally {
 			closeConn(conn);
-		}
-	}
-	/**
-	 * DB切断
-	 * @param conn
-	 */
-	private void closeConn(Connection conn) {
-		if (conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 }

@@ -32,14 +32,6 @@ import dao.MusicDAO;
 public class Update_Music extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Update_Music() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
@@ -125,9 +117,7 @@ public class Update_Music extends HttpServlet {
 						mDAO.removeMusicByM_id(id);
 						resultUpdate = true;
 					}
-
 				}
-
 			}
 
 			if(!resultUpdate) {
@@ -173,6 +163,11 @@ public class Update_Music extends HttpServlet {
 		}
 		return file;
 	}
+	/**
+	 * ファイル名の取得
+	 * @param part
+	 * @return
+	 */
 	private String getFileName(Part part) {
         String name = null;
         for (String dispotion : part.getHeader("Content-Disposition").split(";")) {

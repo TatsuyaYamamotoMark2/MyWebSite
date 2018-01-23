@@ -16,7 +16,7 @@ import beans.MusicBeans;
  * @author yamamoto_tatsuya
  *
  */
-public class MusicDAO {
+public class MusicDAO  extends DBManager{
 
 
 	/**
@@ -130,19 +130,6 @@ public class MusicDAO {
 			}
 
 		return musicList;
-	}
-	/**
-	 * DB切断
-	 * @param conn
-	 */
-	private void closeConn(Connection conn) {
-		if (conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 	/**
 	 * アルバムに楽曲を登録する

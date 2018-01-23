@@ -8,6 +8,11 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 
+/**
+ * 汎用クラス
+ * @author tatsuya_yamamoto
+ *
+ */
 public class UtillLogic {
 
 	public static final String MP3_UPLOAD_PATH = "/Users/yamatoraneco/git/MyWebSite/MyECSite/WebContent/mp3/";
@@ -30,12 +35,12 @@ public class UtillLogic {
 		}
 	}
 
-/**
- * 文字列が半角英数のみで構成されているかをチェックする
- *
- * @param input チェック対象の文字列
- * @return チェック結果。半角英数のみなら true そうでなければ false
- */
+	/**
+	 * 文字列が半角英数のみで構成されているかをチェックする
+	 *
+	 * @param input チェック対象の文字列
+	 * @return チェック結果。半角英数のみなら true そうでなければ false
+	 */
 	public static boolean isStringCheck(String input) {
 		for(int i = 0; i < input.length(); i++) {
 			char c = input.charAt(i);

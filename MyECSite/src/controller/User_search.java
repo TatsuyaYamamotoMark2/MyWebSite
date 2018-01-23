@@ -18,9 +18,6 @@ import dao.UserDAO;
 public class User_search extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public User_search() {
-        super();
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -46,8 +43,7 @@ public class User_search extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	   	//文字化け退散おまじない
-    	request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
 		//フォームからの値をrequestしてgetParameter
 		String login_id    = request.getParameter("login_id");

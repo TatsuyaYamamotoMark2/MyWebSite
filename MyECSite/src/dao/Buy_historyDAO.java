@@ -17,7 +17,7 @@ import beans.Buy_historyBeans;
  *  * @author yamatoraneco
  *
  */
-public class Buy_historyDAO {
+public class Buy_historyDAO  extends DBManager{
 
 
 	/**
@@ -88,19 +88,6 @@ public class Buy_historyDAO {
 			return resultID;
 		} finally {
 			closeConn(conn);
-		}
-	}
-	/**
-	 * SQLコネクションの破棄
-	 * @param conn
-	 */
-	private void closeConn(Connection conn) {
-		if (conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 }
