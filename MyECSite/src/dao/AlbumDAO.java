@@ -11,9 +11,18 @@ import java.util.List;
 import base.DBManager;
 import beans.AlbumBeans;
 
+/**
+ * アルバムテーブルへのアクセスオブジェクト
+ * @author tatsuya_yamamoto
+ *
+ */
 public class AlbumDAO {
 
-	//キーワード検索
+	/**
+	 * キーワードから全テーブルへ検索をかけてアルバムインスタンスリストを返す
+	 * @param search_value
+	 * @return
+	 */
 	public List<AlbumBeans> KeywordSearch(String search_value) {
 		Connection conn = null;
 		List<AlbumBeans> albumList = new ArrayList<AlbumBeans>();
@@ -58,7 +67,12 @@ public class AlbumDAO {
 			}
 		return albumList;
 	}
-	//対象選択検索
+	/**
+	 * 検索テーブルを選択した場合の検索,アルバムインスタンスリストを返す
+	 * @param searchPattern
+	 * @param search_value
+	 * @return
+	 */
 	public List<AlbumBeans> SelectPatternSearch(String searchPattern,String search_value) {
 		Connection conn = null;
 		List<AlbumBeans> albumList = new ArrayList<AlbumBeans>();
@@ -98,7 +112,11 @@ public class AlbumDAO {
 			}
 		return albumList;
 	}
-	//AlbumIDから情報取得
+	/**
+	 * アルバムIDからアルバムインスタンスを取得し返す
+	 * @param id
+	 * @return
+	 */
 	public AlbumBeans findById(String id) {
 	Connection conn = null;
 	try {
@@ -125,7 +143,10 @@ public class AlbumDAO {
 	}
 	return null;
 }
-	//全アルバムの情報を取得をしてリストで返す
+	/**
+	 * 全アルバムのインスタンスを取得し返す
+	 * @return
+	 */
 	public List<AlbumBeans> findAll() {
 		Connection conn = null;
 		List<AlbumBeans> albumList = new ArrayList<AlbumBeans>();
@@ -159,14 +180,22 @@ public class AlbumDAO {
 			}
 		return albumList;
 	}
-	//含み検索
+	/**
+	 * 文字列が数値以外なら曖昧検索文へ変換(%%で囲む)
+	 * @param str
+	 * @return
+	 */
 	private String likeSearch(String str) {
 		if (str.indexOf("%") == -1) {
 			str = "%" + str + "%";
 		}
 		return str;
 	}
-	//該当ユーザーの購入済み曲を含む全アルバムのみ取得
+	/**
+	 * 全アルバムから該当ユーザーの購入済み曲のみ取得しアルバムインスタンスリストを返す
+	 * @param user_id
+	 * @return
+	 */
 	public List<AlbumBeans> findAllPurchased(String user_id) {
 		Connection conn = null;
 		List<AlbumBeans> albumList = new ArrayList<AlbumBeans>();
@@ -202,7 +231,13 @@ public class AlbumDAO {
 			}
 		return albumList;
 	}
-	//該当ユーザーの購入済み曲を含むアルバムの検索対象選択検索
+	/**
+	 * 該当ユーザーの購入済み曲を含むアルバムの検索対象選択検索をしアルバムインスタンスリストを返す
+	 * @param user_id
+	 * @param searchPattern
+	 * @param search_value
+	 * @return
+	 */
 	public List<AlbumBeans> SelectPatternSearchPurchased(String user_id,String searchPattern,String search_value) {
 		Connection conn = null;
 		List<AlbumBeans> albumList = new ArrayList<AlbumBeans>();
@@ -245,7 +280,12 @@ public class AlbumDAO {
 			}
 		return albumList;
 	}
-	//該当ユーザーの購入済み曲を含むアルバムのキーワード検索
+	/**
+	 * 該当ユーザーの購入済み曲を含むアルバムのキーワード検索をしアルバムインスタンスリストを返す
+	 * @param search_value
+	 * @param user_id
+	 * @return
+	 */
 	public List<AlbumBeans> KeywordSearchPurchased(String search_value,String user_id) {
 		Connection conn = null;
 		List<AlbumBeans> albumList = new ArrayList<AlbumBeans>();
@@ -289,7 +329,11 @@ public class AlbumDAO {
 			}
 		return albumList;
 	}
-	//アルバムの削除
+	/**
+	 * アルバムの削除
+	 * @param id
+	 * @return
+	 */
 	public boolean removeById(String id) {
 		Connection conn = null;
 		try {
@@ -312,7 +356,12 @@ public class AlbumDAO {
 			closeConn(conn);
 		}
 	}
-	//アルバムの追加
+	/**
+	 * 新規アルバム追加
+	 * @param al_name
+	 * @param image
+	 * @return
+	 */
 	public boolean addAlbum(String al_name,String image) {
 		Connection conn = null;
 		try {
@@ -337,7 +386,13 @@ public class AlbumDAO {
 			closeConn(conn);
 		}
 	}
-	//アルバムの更新
+	/**
+	 * アルバムの更新
+	 * @param name
+	 * @param image
+	 * @param al_id
+	 * @return
+	 */
 	public boolean updateAlbum(String name, String image, String al_id) {
 		Connection conn = null;
 		try {
@@ -363,7 +418,10 @@ public class AlbumDAO {
 			closeConn(conn);
 		}
 	}
-	//データベース切断
+	/**
+	 * DB切断
+	 * @param conn
+	 */
 	private void closeConn(Connection conn) {
 		if (conn != null) {
 			try {

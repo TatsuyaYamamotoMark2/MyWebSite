@@ -11,10 +11,18 @@ import java.util.List;
 import base.DBManager;
 import beans.UserBeans;
 
+/**
+ * ユーザーテーブルへのアクセスオブジェクト
+ * @author yamamoto_tatsuya
+ *
+ */
 public class UserDAO {
 
-
-	//ユーザー削除
+	/**
+	 * ユーザーをDBから削除
+	 * @param id
+	 * @return
+	 */
 	public boolean deleteUser(String id) {
 		Connection conn = null;
 		try {
@@ -37,30 +45,47 @@ public class UserDAO {
 			closeConn(conn);
 		}
 	}
-	//パスワード以外更新
-		public boolean updateUser1(String login_id,String name, String birth_date,String email, String id) {
-			Connection conn = null;
-			try {
-				conn = DBManager.getConnection();
-				String sql = "update music_ec.user set login_id = ? ,name = ?, birth_date = ?,email = ? ,update_date = now() where user_id = ?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setString(1, login_id);
-				pStmt.setString(2, name);
-				pStmt.setString(3, birth_date);
-				pStmt.setString(4, email);
-				pStmt.setString(5, id);
-				pStmt.executeUpdate();
-				return true;
+	/**
+	 * ユーザー情報のパスワード以外のカラムを更新
+	 * @param login_id
+	 * @param name
+	 * @param birth_date
+	 * @param email
+	 * @param id
+	 * @return
+	 */
+	public boolean updateUser1(String login_id,String name, String birth_date,String email, String id) {
+		Connection conn = null;
+		try {
+			conn = DBManager.getConnection();
+			String sql = "update music_ec.user set login_id = ? ,name = ?, birth_date = ?,email = ? ,update_date = now() where user_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, login_id);
+			pStmt.setString(2, name);
+			pStmt.setString(3, birth_date);
+			pStmt.setString(4, email);
+			pStmt.setString(5, id);
+			pStmt.executeUpdate();
+			return true;
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 
-			} finally {
-				closeConn(conn);
-			}
+		} finally {
+			closeConn(conn);
 		}
-	//更新
+	}
+	/**
+	 * ユーザー情報の更新
+	 * @param login_id
+	 * @param name
+	 * @param password
+	 * @param birth_date
+	 * @param email
+	 * @param id
+	 * @return
+	 */
 	public boolean updateUser(String login_id,String name, String password,String birth_date,String email,String id ) {
 		Connection conn = null;
 		try {
@@ -90,88 +115,106 @@ public class UserDAO {
 			closeConn(conn);
 		}
 	}
-	//検索
-		public List<UserBeans> userSearch(String login_id, String name, String birth_date_from, String birth_date_to) {
-			Connection conn = null;
-			List<UserBeans> userList = new ArrayList<UserBeans>();
-			String[] str = {login_id,likeSearch(name)};
-			for(int i =0;i<str.length;i++) {
-				try {
-					Integer.parseInt(str[i]);
-				}catch(NumberFormatException e){
-					str[i] = "'" + str[i] + "'";
-				}
-			}
-			String setLogin_id = str[0];
-			String setName = str[1];
+	/**
+	 * ユーザーの検索
+	 * @param login_id
+	 * @param name
+	 * @param birth_date_from
+	 * @param birth_date_to
+	 * @return	ヒットしたユーザーのインスタンスリスト
+	 */
+	public List<UserBeans> userSearch(String login_id, String name, String birth_date_from, String birth_date_to) {
+		Connection conn = null;
+		List<UserBeans> userList = new ArrayList<UserBeans>();
+		String[] str = {login_id,likeSearch(name)};
+		for(int i =0;i<str.length;i++) {
 			try {
-				conn = DBManager.getConnection();
-				String sql = "SELECT * FROM music_ec.user";
-				if(!login_id.isEmpty()) {
-					sql = createSQL(sql, "login_id = " + setLogin_id);
-				}
-				if(!name.isEmpty()) {
-					sql = createSQL(sql, "name like " + setName);
-				}
-				if(!birth_date_from.isEmpty()) {
-					sql = createSQL(sql, "birth_date >= " + "'" + birth_date_from +"'");
-				}
-				if(!birth_date_to.isEmpty()) {
-					sql = createSQL(sql, "birth_date <= "+  "'" +birth_date_to +"'");
-				}
-				//adminは表示しない
-				sql = createSQL(sql, "user_id <> 1");
-
-				 // SELECTを実行し、結果表を取得
-				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery(sql);
-				while (rs.next()) {
-					String idSet = rs.getString("user_id");
-					String login_idSet = rs.getString("login_id");
-					String nameSet = rs.getString("name");
-					String birth_dateSet = rs.getString("birth_date");
-					String passwordSet = rs.getString("password");
-					String create_dateSet = rs.getString("create_date");
-					String update_dateSet = rs.getString("update_date");
-					String emailSet = rs.getString("email");
-					UserBeans ubList = new UserBeans(idSet,login_idSet, nameSet, birth_dateSet, passwordSet, create_dateSet, update_dateSet,emailSet);
-					userList.add(ubList);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return null;
-			} finally {
-				closeConn(conn);
+				Integer.parseInt(str[i]);
+			}catch(NumberFormatException e){
+				str[i] = "'" + str[i] + "'";
 			}
-		return userList;
 		}
-	//元のsqlにwhereが含まれていない場合は「where」それ以外は「and」から開始
-		private String createSQL(String baseSql, String addSql) {
-			StringBuilder resulet = new StringBuilder();
-			resulet.append(baseSql);
-
-			if (baseSql.indexOf("where") == -1) {
-				resulet.append(" " + "where" + " ");
-			} else {
-				resulet.append(" " + "and" + " ");
+		String setLogin_id = str[0];
+		String setName = str[1];
+		try {
+			conn = DBManager.getConnection();
+			String sql = "SELECT * FROM music_ec.user";
+			if(!login_id.isEmpty()) {
+				sql = createSQL(sql, "login_id = " + setLogin_id);
 			}
-			resulet.append(addSql);
-			return resulet.toString();
+			if(!name.isEmpty()) {
+				sql = createSQL(sql, "name like " + setName);
+			}
+			if(!birth_date_from.isEmpty()) {
+				sql = createSQL(sql, "birth_date >= " + "'" + birth_date_from +"'");
+			}
+			if(!birth_date_to.isEmpty()) {
+				sql = createSQL(sql, "birth_date <= "+  "'" +birth_date_to +"'");
+			}
+			//adminは表示しない
+			sql = createSQL(sql, "user_id <> 1");
+
+			 // SELECTを実行し、結果表を取得
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				String idSet = rs.getString("user_id");
+				String login_idSet = rs.getString("login_id");
+				String nameSet = rs.getString("name");
+				String birth_dateSet = rs.getString("birth_date");
+				String passwordSet = rs.getString("password");
+				String create_dateSet = rs.getString("create_date");
+				String update_dateSet = rs.getString("update_date");
+				String emailSet = rs.getString("email");
+				UserBeans ubList = new UserBeans(idSet,login_idSet, nameSet, birth_dateSet, passwordSet, create_dateSet, update_dateSet,emailSet);
+				userList.add(ubList);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			closeConn(conn);
 		}
-	//含み検索
+	return userList;
+	}
+	/**
+	 * 元のsql文にwhereが含まれていない場合は「where」それ以外は「and」から開始
+	 * @param baseSql	もとのsql文
+	 * @param addSql		追加したいsql文
+	 * @return			andもしくはwhereからsql文を結合した文
+	 */
+	private String createSQL(String baseSql, String addSql) {
+		StringBuilder resulet = new StringBuilder();
+		resulet.append(baseSql);
+
+		if (baseSql.indexOf("where") == -1) {
+			resulet.append(" " + "where" + " ");
+		} else {
+			resulet.append(" " + "and" + " ");
+		}
+		resulet.append(addSql);
+		return resulet.toString();
+	}
+	/**
+	 * 文字列が数値以外なら曖昧検索へ変換(%%で囲む)
+	 * @param str	検索文字列
+	 * @return
+	 */
 	private String likeSearch(String str) {
 		if (str.indexOf("%") == -1) {
 			str = "%" + str + "%";
 		}
 		return str;
 	}
-	//全登録者の情報を取得をしてリストで返す
+	/**
+	 * 全登録者のインスタンスを返す
+	 * @return
+	 */
 	public List<UserBeans> findAll() {
 		Connection conn = null;
 		List<UserBeans> userList = new ArrayList<UserBeans>();
 
 		try {
-			// データベースへ接続
 			conn = DBManager.getConnection();
 
 			// SELECT文を準備
@@ -203,7 +246,11 @@ public class UserDAO {
 			}
 		return userList;
 	}
-	//userIDから情報取得
+	/**
+	 * IDからインスタンスを取得
+	 * @param id
+	 * @return
+	 */
 	public UserBeans findById(String id) {
 	Connection conn = null;
 	try {
@@ -234,7 +281,15 @@ public class UserDAO {
 	}
 	return null;
 }
-	//新規登録
+	/**
+	 * ユーザーテーブルへ新規登録
+	 * @param login_id
+	 * @param name
+	 * @param birth_date
+	 * @param password
+	 * @param email
+	 * @return
+	 */
 	public boolean newUser(String login_id, String name, String birth_date, String password ,String email) {
 
 		Connection conn = null;
@@ -263,7 +318,11 @@ public class UserDAO {
 			closeConn(conn);
 		}
 	}
-	//重複チェック
+	/**
+	 * IDが既に使用されていればtrueを返す
+	 * @param login_id
+	 * @return
+	 */
 	public boolean findByLoginId(String login_id) {
 		Connection conn = null;
 		try {
@@ -285,7 +344,12 @@ public class UserDAO {
 			closeConn(conn);
 		}
 	}
-	//ログイン
+	/**
+	 * ログイン処理,取得したユーザーのインスタンスを返す
+	 * @param login_id
+	 * @param password
+	 * @return
+	 */
 	public UserBeans findByPass(String login_id, String password) {
 		Connection conn = null;
 		try {
@@ -324,7 +388,10 @@ public class UserDAO {
 			closeConn(conn);
 		}
 	}
-	//データベース切断
+	/**
+	 * DBから切断
+	 * @param conn
+	 */
 	private void closeConn(Connection conn) {
 		if (conn != null) {
 			try {

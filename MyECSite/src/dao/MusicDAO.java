@@ -11,6 +11,11 @@ import base.DBManager;
 import beans.CartBeans;
 import beans.MusicBeans;
 
+/**
+ * 楽曲テーブルへのアクセスオブジェクト
+ * @author yamamoto_tatsuya
+ *
+ */
 public class MusicDAO {
 
 
@@ -40,7 +45,11 @@ public class MusicDAO {
 			closeConn(conn);
 		}
 	}
-	//曲のIDで曲情報を返す
+	/**
+	 * 楽曲IDから楽曲インスタンスを返す
+	 * @param m_id
+	 * @return
+	 */
 	public CartBeans findByIdtoCart(String m_id) {
 	Connection conn = null;
 	try {
@@ -75,7 +84,11 @@ public class MusicDAO {
 	}
 	return null;
 }
-	//アルバムの収録曲情報を取得をしてリストで返す
+	/**
+	 * アルバムの収録楽曲インスタンスをリストで返す
+	 * @param album_id
+	 * @return
+	 */
 	public List<MusicBeans> findByalbum_id(String album_id) {
 		Connection conn = null;
 		List<MusicBeans> musicList = new ArrayList<MusicBeans>();
@@ -118,7 +131,10 @@ public class MusicDAO {
 
 		return musicList;
 	}
-	//DB切断
+	/**
+	 * DB切断
+	 * @param conn
+	 */
 	private void closeConn(Connection conn) {
 		if (conn != null) {
 			try {
@@ -168,6 +184,10 @@ public class MusicDAO {
 			closeConn(conn);
 		}
 	}
+	/**
+	 * 楽曲をアルバムから削除
+	 * @param id
+	 */
 	public void removeMusicByM_id(String id) {
 		Connection conn = null;
 		try {

@@ -11,12 +11,18 @@ import java.util.List;
 import base.DBManager;
 import beans.ArtistBeans;
 
+/**
+ * アーティストテーブルへのアクセスオブジェクト
+ * @author yamamoto_tatsuya
+ *
+ */
 public class ArtistDAO {
 
 
-
-
-
+	/**
+	 * 全アーティストのインスタンスリストを返す
+	 * @return
+	 */
 	public List<ArtistBeans> findAll() {
 		Connection conn = null;
 		List<ArtistBeans> aritstList = new ArrayList<ArtistBeans>();
@@ -42,6 +48,10 @@ public class ArtistDAO {
 		return aritstList;
 	}
 
+	/**
+	 * DB切断
+	 * @param conn
+	 */
 	private void closeConn(Connection conn) {
 		if (conn != null) {
 			try {
@@ -52,6 +62,11 @@ public class ArtistDAO {
 		}
 	}
 
+	/**
+	 * IDからアーティストを検索しインスタンスを返す
+	 * @param id
+	 * @return
+	 */
 	public ArtistBeans findById(String id) {
 			Connection conn = null;
 			try {
@@ -76,6 +91,11 @@ public class ArtistDAO {
 			return null;
 	}
 
+	/**
+	 * アーティストの削除
+	 * @param id
+	 * @return
+	 */
 	public boolean removeById(String id) {
 
 		Connection conn = null;
@@ -102,7 +122,11 @@ public class ArtistDAO {
 		}
 	}
 
-
+	/**
+	 * 新規アーティストの登録
+	 * @param ar_name
+	 * @return
+	 */
 	public boolean addArtist(String ar_name) {
 		Connection conn = null;
 		try {
@@ -128,7 +152,12 @@ public class ArtistDAO {
 		}
 	}
 
-
+	/**
+	 * アーティスト名の更新
+	 * @param name
+	 * @param id
+	 * @return
+	 */
 	public boolean updateArtist(String name, String id) {
 		Connection conn = null;
 		try {

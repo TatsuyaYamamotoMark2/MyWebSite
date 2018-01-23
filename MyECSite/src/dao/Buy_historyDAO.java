@@ -12,11 +12,16 @@ import com.mysql.jdbc.Statement;
 import base.DBManager;
 import beans.Buy_historyBeans;
 
+/**
+ * 購入履歴の登録及び登録時に履歴IDを生成するテーブルへのアクセスオブジェクト
+ *  * @author yamatoraneco
+ *
+ */
 public class Buy_historyDAO {
 
 
 	/**
-	 * 購入履歴IDの取得
+	 * ユーザーの購入履歴リストの取得
 	 * @param user_id
 	 * @return
 	 */
@@ -76,8 +81,6 @@ public class Buy_historyDAO {
 				    	resultID = rs.getInt(1);
 				    }
 				  }
-
-
 			return resultID;
 
 		} catch (SQLException e) {

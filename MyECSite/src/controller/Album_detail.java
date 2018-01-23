@@ -83,7 +83,6 @@ public class Album_detail extends HttpServlet {
 			for(Buy_historyBeans purchasedMusic : userHistoryList) {
 				for(MusicBeans  music : musicList) {
 					if(music.getM_id().equals(purchasedMusic.getM_id())) {
-
 						albumBean.setPurchased(true);
 						music.setPurchased(true);
 					}
