@@ -195,5 +195,44 @@ public class MusicDAO  extends DBManager{
 			closeConn(conn);
 		}
 	}
+		/**
+		 * 購入数の多い上位の楽曲インタンスリストを返す
+		 * @return
+		 */
+	public static List<MusicBeans> getTopRankMusicList() {
+		Connection conn = null;
+		List<MusicBeans> musicList = new ArrayList<MusicBeans>();
 
+		try {
+			// データベースへ接続
+			conn = DBManager.getConnection();
+
+			// SELECT文を準備
+			String sql 	= "SELECT  music_ec.music.m_name,album.al_id,album.al_name,artist.ar_name,album.image  "+
+
+							"FROM music_ec.album  " +
+							"JOIN music_ec.music ON album.al_id = music_ec.music.al_id " +
+							"JOIN music_ec.artist ON artist.ar_id = music_ec.music.ar_id "+
+							"JOIN music_ec.buy_detail ON buy_detail.m_id = music_ec.music.m_id " +
+							"GROUP BY music_ec.music.m_name,album.al_id,album.al_name,artist.ar_name,album.image ";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			System.out.println(pStmt);
+			ResultSet rs = pStmt.executeQuery();
+			while(rs.next()) {
+				MusicBeans music = new MusicBeans();
+				music.setM_name(rs.getString("m_name"));
+				music.setAl_id(rs.getString("al_id"));
+				music.setAl_name(rs.getString("al_name"));
+				music.setAr_name(rs.getString("ar_name"));
+				music.setImage(rs.getString("image"));
+				musicList.add(music);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			closeConn(conn);
+			}
+		return musicList;
+	}
 }

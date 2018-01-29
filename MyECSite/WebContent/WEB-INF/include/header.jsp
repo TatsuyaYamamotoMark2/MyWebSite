@@ -26,11 +26,12 @@
    					</button>
 					<div id="gnavi" class="collapse navbar-collapse  ">
    					 <ul class="nav navbar-nav  ">
-						<li class="nav-li"><a href="User?id=${usb.id}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> MY PAGE</a></li>
-						<li class="nav-li"><a href="Library?id=${usb.id }"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> MY LIBRARY</a></li>
-						<li class="nav-li"><a href="Cart?addFlg=0"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> CART</a></li>
-						<li class="nav-li"><a href="User_search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> USER SEACH</a></li>
-						<li class="nav-li"><a href="Logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> LOGOUT</a></li>
+						<li class="nav-li"><a href="User?id=${usb.id}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>MY PAGE</a></li>
+						<li class="nav-li"><a href="Ranking"><span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>RANKING</a></li>
+						<li class="nav-li"><a href="Library?id=${usb.id }"><span class="glyphicon glyphicon-music" aria-hidden="true"></span>MY LIBRARY</a></li>
+						<li class="nav-li"><a href="Cart?addFlg=0"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>CART</a></li>
+						<li class="nav-li"><a href="User_search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>USER SEACH</a></li>
+						<li class="nav-li"><a href="Logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>LOGOUT</a></li>
 					</ul>
 					</div>
 					</c:if>

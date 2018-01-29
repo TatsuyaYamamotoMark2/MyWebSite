@@ -31,7 +31,7 @@ public class DBManager {
 	 * DB切断
 	 * @param conn
 	 */
-	public void closeConn(Connection conn) {
+	public static void closeConn(Connection conn) {
 		if (conn != null) {
 			try {
 				conn.close();

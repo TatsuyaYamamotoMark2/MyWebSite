@@ -81,7 +81,6 @@
 			</form>
 				</c:when>
 				<c:otherwise>
-
 					<p>NAME</p>
 					<p class="block-mb">${usd.name}
 					<p>BIRTH DATE</p>
