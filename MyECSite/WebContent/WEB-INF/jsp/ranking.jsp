@@ -21,7 +21,7 @@
 	<div class="container-fluid">
 		<div class="row main">
 			<h1>RANKING</h1>
-			<h2>TOP10</h2>
+			<h2>TOP${musicList.size()}</h2>
 				<div class="col-lg-12 table-responsive">
 
 
@@ -39,9 +39,9 @@
 
 						<c:forEach var="music" items="${musicList}">
 							<tr>
-								<td>int</td>
-								<td>${music.m_name}</td>
-								<td><a href= Album_detail?al_id=${music.al_id}><img src="./img/${music.image}" class="cart_img"></a>${music.al_name}</td>
+								<td><h3>${music.rank}位</h3>${music.count}DL</td>
+								<td><a href= Album_detail?al_id=${music.al_id}>${music.m_name}</a></td>
+								<td><a href= Album_detail?al_id=${music.al_id}><img src="./img/${music.image}" class="cart_img">${music.al_name}</a></td>
 								<td>${music.ar_name}</td>
 								<td><a href="Album_detail?al_id=${music.al_id}">購入画面</a></td>
 							</tr>
@@ -53,10 +53,5 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
-
 </body>
 </html>

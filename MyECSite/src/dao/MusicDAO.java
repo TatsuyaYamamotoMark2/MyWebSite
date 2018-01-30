@@ -196,10 +196,10 @@ public class MusicDAO  extends DBManager{
 		}
 	}
 		/**
-		 * 購入数の多い上位の楽曲インタンスリストを返す
+		 * 購入数の多い上位の楽曲インタンスを10個までリストで返す
 		 * @return
 		 */
-	public static List<MusicBeans> getTopRankMusicList() {
+	public List<MusicBeans> getTopRankMusicList() {
 		Connection conn = null;
 		List<MusicBeans> musicList = new ArrayList<MusicBeans>();
 
@@ -208,15 +208,16 @@ public class MusicDAO  extends DBManager{
 			conn = DBManager.getConnection();
 
 			// SELECT文を準備
-			String sql 	= "SELECT  music_ec.music.m_name,album.al_id,album.al_name,artist.ar_name,album.image  "+
-
+			String sql 	= "SELECT  music_ec.music.m_name,album.al_id,album.al_name,artist.ar_name,album.image,  "+
+							"COUNT(*) as count " +
 							"FROM music_ec.album  " +
 							"JOIN music_ec.music ON album.al_id = music_ec.music.al_id " +
 							"JOIN music_ec.artist ON artist.ar_id = music_ec.music.ar_id "+
 							"JOIN music_ec.buy_detail ON buy_detail.m_id = music_ec.music.m_id " +
-							"GROUP BY music_ec.music.m_name,album.al_id,album.al_name,artist.ar_name,album.image ";
+							"GROUP BY music_ec.music.m_name,album.al_id,album.al_name,artist.ar_name,album.image "+
+							"ORDER BY count DESC "+
+							"LIMIT 10";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			System.out.println(pStmt);
 			ResultSet rs = pStmt.executeQuery();
 			while(rs.next()) {
 				MusicBeans music = new MusicBeans();
@@ -225,6 +226,7 @@ public class MusicDAO  extends DBManager{
 				music.setAl_name(rs.getString("al_name"));
 				music.setAr_name(rs.getString("ar_name"));
 				music.setImage(rs.getString("image"));
+				music.setCount(rs.getInt("count"));
 				musicList.add(music);
 			}
 		} catch (SQLException e) {

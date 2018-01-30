@@ -21,6 +21,8 @@ public class MusicBeans implements Serializable {
 	private String release_date;
 	private String ar_name;
 	private String al_price;
+	private int count;
+	private int rank;
 
 	private boolean purchased;
 	private boolean add_cart;
@@ -29,7 +31,7 @@ public class MusicBeans implements Serializable {
 
 
 
-	public MusicBeans(String m_id,String al_id,String ar_id,String m_name,String m_price,String DL_path,String mp3,String track_no,String al_name,String image,String release_date,String ar_name,String al_price) {
+	public MusicBeans(String m_id,String al_id,String ar_id,String m_name,String m_price,String DL_path,String mp3,String track_no,String al_name,String image,String release_date,String ar_name,String al_price,String count) {
 		this.setM_id(m_id);
 		this.setAl_id(al_id);
 		this.setAr_id(ar_id);
@@ -144,6 +146,18 @@ public class MusicBeans implements Serializable {
 	}
 	public void setPurchased(boolean purchased) {
 		this.purchased = purchased;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public int getRank() {
+		return rank;
+	}
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 
 }

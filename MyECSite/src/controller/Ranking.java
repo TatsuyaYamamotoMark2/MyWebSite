@@ -23,13 +23,29 @@ public class Ranking extends HttpServlet {
 		if ((UserBeans) request.getSession().getAttribute("usb") == null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login_register.jsp");
 			dispatcher.forward(request, response);
-
 		} else {
 
-
-
 			MusicDAO mDAO = new MusicDAO();
-			List<MusicBeans> TopMusicList = MusicDAO.getTopRankMusicList();
+			List<MusicBeans> TopMusicList = mDAO.getTopRankMusicList();
+
+
+			int preCount = 0;
+			boolean condition = false;
+
+			for (int i = 0; i < TopMusicList.size(); i++) {
+				if(i>0) {
+					preCount = TopMusicList.get(i-1).getCount();
+				}
+
+				if (preCount == TopMusicList.get(i).getCount()) {
+					TopMusicList.get(i).setRank(i);
+					condition = true;
+				} else {
+					TopMusicList.get(i).setRank(i + 1);
+				}
+
+			}
+
 
 			request.setAttribute("musicList", TopMusicList);
 
