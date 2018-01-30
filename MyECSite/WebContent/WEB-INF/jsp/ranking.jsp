@@ -29,27 +29,44 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Title</th>
+								<th>Title/Artist</th>
 								<th>Album</th>
-								<th>Artist</th>
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 
+
 						<c:forEach var="music" items="${musicList}">
-							<tr>
-								<td><h3>${music.rank}位</h3>${music.count}DL</td>
-								<td><a href= Album_detail?al_id=${music.al_id}>${music.m_name}</a></td>
-								<td><a href= Album_detail?al_id=${music.al_id}><img src="./img/${music.image}" class="cart_img">${music.al_name}</a></td>
-								<td>${music.ar_name}</td>
-								<td><a href="Album_detail?al_id=${music.al_id}">購入画面</a></td>
-							</tr>
+
+						<c:choose>
+
+							<c:when test="${music.rank == 1}">
+								<tr>
+									<td><h1>${music.rank}位</h1>${music.count}DL</td>
+									<td><a href= Album_detail?al_id=${music.al_id}>${music.m_name}</a><br>${music.ar_name}</td>
+									<td><a href= Album_detail?al_id=${music.al_id}><img src="./img/${music.image}" class="cart_img">${music.al_name}</a></td>
+									<td><a href="Album_detail?al_id=${music.al_id}">購入画面</a></td>
+								</tr>
+							</c:when>
+
+							<c:otherwise>
+								<tr>
+										<td><h3>${music.rank}位</h3>${music.count}DL</td>
+										<td><a href= Album_detail?al_id=${music.al_id}>${music.m_name}</a><br>${music.ar_name}</td>
+										<td><a href= Album_detail?al_id=${music.al_id}><img src="./img/${music.image}" class="cart_img">${music.al_name}</a></td>
+										<td><a href="Album_detail?al_id=${music.al_id}">購入画面</a></td>
+									</tr>
+							</c:otherwise>
+
+						</c:choose>
+
+
 						</c:forEach>
+
+
 						</tbody>
 				</table>
-
-
 			</div>
 		</div>
 	</div>

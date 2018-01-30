@@ -24,34 +24,39 @@ public class Ranking extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login_register.jsp");
 			dispatcher.forward(request, response);
 		} else {
-
 			MusicDAO mDAO = new MusicDAO();
 			List<MusicBeans> TopMusicList = mDAO.getTopRankMusicList();
 
-
-			int preCount = 0;
-			boolean condition = false;
-
-			for (int i = 0; i < TopMusicList.size(); i++) {
-				if(i>0) {
-					preCount = TopMusicList.get(i-1).getCount();
-				}
-
-				if (preCount == TopMusicList.get(i).getCount()) {
-					TopMusicList.get(i).setRank(i);
-					condition = true;
-				} else {
-					TopMusicList.get(i).setRank(i + 1);
-				}
-
-			}
-
+			setRank(TopMusicList);
 
 			request.setAttribute("musicList", TopMusicList);
-
-
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ranking.jsp");
 			dispatcher.forward(request, response);
+		}
+	}
+
+	/**
+	 * 購入数をもとに同率を考慮して順位を設定
+	 * @param TopMusicList
+	 */
+	private void setRank(List<MusicBeans> TopMusicList) {
+		int preCount = 0;
+		int j = 1;
+
+		for (int i = 0; i < TopMusicList.size(); i++) {
+			if(i>0) {
+				preCount = TopMusicList.get(i-1).getCount();
+			}
+			if (preCount == TopMusicList.get(i).getCount()) {
+				if(i != TopMusicList.get(i-1).getRank()) {
+					TopMusicList.get(i).setRank(i-j);
+					j++;
+				}else {
+				TopMusicList.get(i).setRank(i);
+				}
+			}else {
+				TopMusicList.get(i).setRank(i + 1);
+			}
 		}
 	}
 }

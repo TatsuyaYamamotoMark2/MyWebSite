@@ -195,17 +195,17 @@ public class MusicDAO  extends DBManager{
 			closeConn(conn);
 		}
 	}
-		/**
-		 * 購入数の多い上位の楽曲インタンスを10個までリストで返す
-		 * @return
-		 */
+	/**
+	 * 購入数の多い上位の楽曲インタンスを10個までリストを降順で返す
+	 * @return
+	 */
 	public List<MusicBeans> getTopRankMusicList() {
 		Connection conn = null;
 		List<MusicBeans> musicList = new ArrayList<MusicBeans>();
 
 		try {
 			// データベースへ接続
-			conn = DBManager.getConnection();
+			conn = getConnection();
 
 			// SELECT文を準備
 			String sql 	= "SELECT  music_ec.music.m_name,album.al_id,album.al_name,artist.ar_name,album.image,  "+
